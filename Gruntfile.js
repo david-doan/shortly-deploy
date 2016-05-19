@@ -52,7 +52,7 @@ module.exports = function(grunt) {
       scripts: {
         files: [
           'public/client/**/*.js',
-          'public/lib/**/*.js',
+          'public/lib/**/*.js'
         ],
         tasks: [
           'eslint',
