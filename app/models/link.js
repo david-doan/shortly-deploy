@@ -40,6 +40,14 @@ var findAllLinks = (cb) => {
 
 };
 
+var incVisits = (code, cb) => {
+  db.urlModel.findOneAndUpdate({code: code}, {$inc: {visits: 1}}, {new: true})
+  .then( (data) => {
+    cb(data);
+  });
+};
+
+
 // var test = makeLink({
 //   url: 'www.hackreactor.com',
 //   baseUrl: 'www.hackreactor.com',
@@ -58,3 +66,4 @@ var findAllLinks = (cb) => {
 exports.makeLink = makeLink;
 exports.findLink = findLink;
 exports.findAllLinks = findAllLinks;
+exports.incVisits = incVisits;
