@@ -47,6 +47,8 @@ var incVisits = (code, cb) => {
   });
 };
 
+var remove = (obj) => db.urlModel.findOneAndRemove(obj);
+
 
 // var test = makeLink({
 //   url: 'www.hackreactor.com',
@@ -62,7 +64,7 @@ var incVisits = (code, cb) => {
 // });
 
 
-
+exports.remove = remove;
 exports.makeLink = makeLink;
 exports.findLink = findLink;
 exports.findAllLinks = findAllLinks;

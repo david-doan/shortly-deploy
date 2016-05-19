@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 
 var comparePassword = function(attemptedPassword, username, cb) {
   findUser(username, (data) =>{
-    if (data.password === undefined) {
+    if (!data) {
       cb(false);
     } else {
       cb(bcrypt.compareSync(attemptedPassword, data.password)); 
@@ -37,7 +37,9 @@ var findUser = function(username, cb) {
     });
 };
 
+var remove = (obj) => db.userModel.findOneAndRemove(obj);
 
+exports.remove = remove;
 exports.makeUser = makeUser;
 exports.comparePassword = comparePassword;
 exports.findUser = findUser;
