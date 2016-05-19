@@ -24,6 +24,22 @@ var makeLink = function(obj) {
   return newLink;
 };
 
+var findLink = (link, cb) => {
+  db.urlModel.findOne({url: link})
+  .then(data => {
+    cb(data);
+  });
+
+};
+
+var findAllLinks = (cb) => {
+  db.urlModel.find()
+  .then(data => {
+    cb(data);
+  });
+
+};
+
 // var test = makeLink({
 //   url: 'www.hackreactor.com',
 //   baseUrl: 'www.hackreactor.com',
@@ -39,4 +55,6 @@ var makeLink = function(obj) {
 
 
 
-module.exports = makeLink;
+exports.makeLink = makeLink;
+exports.findLink = findLink;
+exports.findAllLinks = findAllLinks;
